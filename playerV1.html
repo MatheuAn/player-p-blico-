@@ -56,25 +56,5 @@
           </div>
       </section>
 
-
-  <script>
- var jsonData = JSON.parse(localStorage.getItem('jsonData')) || {};
-  
-  // Agora você pode usar jsonData normalmente
-  console.log(jsonData);
-  
-  // Atualizar elementos com os valores do JSON
-  document.getElementById('myVideo').poster = jsonData.projeto.posterurl;
-  document.getElementById('contbanner').textContent = jsonData.projeto.adsbanner;
-  document.querySelector('.poster img').src = jsonData.projeto.posterurl;
-  document.querySelector('.superiorpart img').src = jsonData.projeto.logoSrc;
-  document.querySelector('.superiorpart h8').textContent = jsonData.projeto.tituloEpi;
-  document.getElementById('videoSource').src = jsonData.projeto.video480p;
-  document.getElementById('video480p').dataset.source = jsonData.projeto.video480p;
-  document.getElementById('videoPrincipal').dataset.source = jsonData.projeto.videoPrincipal;
-  document.getElementById('video1080p').dataset.source = jsonData.projeto.video1080p;
- 
-</script>
-
 </body>
 </html>
