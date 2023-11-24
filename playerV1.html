@@ -11,21 +11,21 @@
 <body>
 
        <section class="secvideo video-container custom-video-player">
-          <video id="myVideo" poster="${projeto.posterurl}">
+          <video id="myVideo" poster="">
               <source id="videoSource" src="" preload="auto">
           </video>
           <div class="bannerads">
               <button id="closeButton" onclick="closeBanner()" disabled><div id="countdownpp">5</div></button>
-              <div id="contbanner">${projeto.adsbanner}</div>
+              <div id="contbanner"></div>
           </div>
           <span class="poster">
-              <img src="${projeto.posterurl}">
+              <img src="">
           </span>
           <div id="controlsplayer">
               <span class="superiorpart"> 
                   <span>
-                      <img src="${projeto.logoSrc}">
-                      <h8>${projeto.tituloEpi}</h8>
+                      <img src="">
+                      <h8></h8>
                   </span>
                   <button class="buttonjmp" id="eplinkpro">Próx. Ep</button>
                   <button class="buttonjmp" id="pularop">Pular 90s</button>
@@ -47,9 +47,9 @@
                       <span class="current-time">00:00</span>
                       <span class="total-time"></span>
                       <button id="qualidade"><h8 id="qAtual"></h8></button>
-                      <h3 id="video480p" data-source="${projeto.video480p}" onclick="changeSource(this)">460p</h3><img>
-                      <h3 id="video720p" class="hd" data-source="${projeto.video720p}" onclick="changeSource(this)">720p</h3>
-                      <h3 id="video1080p" data-source="${projeto.video1080p}" onclick="changeSource(this)">1080p</h3>
+                      <h3 id="video480p" data-source="" onclick="changeSource(this)">460p</h3><img>
+                      <h3 id="video720p" class="hd" data-source="" onclick="changeSource(this)">720p</h3>
+                      <h3 id="video1080p" data-source="" onclick="changeSource(this)">1080p</h3>
                       <button id="fullcontrols" class="full-screen-btn"></button>
                   </div>
               </span>
@@ -57,7 +57,6 @@
       </section>
 <script>
   var jsonData = JSON.parse(localStorage.getItem('jsonData')) || {};
-  
 
 document.getElementById('myVideo').poster = jsonData.projeto.posterurl;
 document.getElementById('contbanner').textContent = jsonData.projeto.adsbanner;
@@ -69,6 +68,27 @@ document.getElementById('video480p').dataset.source = jsonData.projeto.video480p
 document.getElementById('video720p').dataset.source = jsonData.projeto.video720p;
 document.getElementById('video1080p').dataset.source = jsonData.projeto.video1080p;
 
+// Envie uma mensagem para a janela pai assim que a página for carregada
+window.onload = function () {
+  window.parent.postMessage({ action: 'atualizarDados', jsonData }, '*');
+};
+
+// Ouve mensagens do iframe
+window.addEventListener('message', function(event) {
+  if (event.data.action === 'atualizarDados') {
+    // Atualiza os dados conforme necessário
+    jsonData = event.data.jsonData;
+    document.getElementById('myVideo').poster = jsonData.projeto.posterurl;
+    document.getElementById('contbanner').textContent = jsonData.projeto.adsbanner;
+    document.querySelector('.poster img').src = jsonData.projeto.posterurl;
+    document.querySelector('.superiorpart img').src = jsonData.projeto.logoSrc;
+    document.querySelector('.superiorpart h8').textContent = jsonData.projeto.tituloEpi;
+    document.getElementById('videoSource').src = jsonData.projeto.video480p;
+    document.getElementById('video480p').dataset.source = jsonData.projeto.video480p;
+    document.getElementById('video720p').dataset.source = jsonData.projeto.video720p;
+    document.getElementById('video1080p').dataset.source = jsonData.projeto.video1080p;
+  }
+});
 </script>
 </body>
 </html>
