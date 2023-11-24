@@ -1,5 +1,28 @@
 
 
+// updateHTML.js
+document.addEventListener("DOMContentLoaded", function () {
+    var video = document.getElementById("myVideo");
+    var poster = document.querySelector(".poster img");
+    var bannerContent = document.getElementById("contbanner");
+    var logo = document.querySelector("#controlsplayer .superiorpart img");
+    var title = document.querySelector("#controlsplayer .superiorpart h8");
+    var video480p = document.getElementById("video480p");
+    var videoPrincipal = document.getElementById("videoPrincipal");
+    var video1080p = document.getElementById("video1080p");
+
+    // Update the elements with 'DataJsn' data
+    video.setAttribute("poster", DataJsn.posterurl);
+    poster.src = DataJsn.posterurl;
+    bannerContent.textContent = DataJsn.adsbanner;
+    logo.src = DataJsn.logoSrc;
+    title.textContent = DataJsn.tituloEpi;
+    video480p.setAttribute("data-source", DataJsn.video480p);
+    videoPrincipal.setAttribute("data-source", DataJsn.videoPrincipal);
+    video1080p.setAttribute("data-source", DataJsn.video1080p);
+});
+
+
 const video = document.querySelector("video");
 const progressaoInput = document.querySelector(".progressao");
 let isSeeking = false;
