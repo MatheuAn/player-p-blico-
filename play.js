@@ -1,34 +1,61 @@
- var DataJsn = {
-      "posterurl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTibkyRP8IPYlfOKDmGeJs-BtLjMvjd4b9FeQ&usqp=CAU",
-      "adsbanner": "",
-      "logoSrc": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWCjWhAZTjrCbHCQF9ZeBGPYlNMtSp4Rbvi9mt7Zi6W4BsYO4XhNFWwv-JXX6A9edL0rjSqARjN_Rwf8Q1keR_doN4gIPoYtcrlyuhGEFmePVcgTS__BBVPrGdZMhMlLILQJFeiy8mYt1e8y4Ln-JVeVUK9u4pmQ1t1EKoYZWTEvFE01IpZwB55nxoFQ/s1600/1662763087449.png",
-      "tituloEpi": "Boruto: Naruto Next",
-      "videoPrincipal": "https://hd2.animesdigital.org/animes/j/jujutsu-kaisen-2/18.mp4",
-      "video480p": "https://hd2.animesdigital.org/animes/j/jujutsu-kaisen-2/18.mp4",
-      "video1080p": "https://hd2.animesdigital.org/animes/j/jujutsu-kaisen-2/18.mp4"
-    };
+   // Atualizando o objeto JSON 'projeto' com as informações específicas
+var htmlContent = `
+       <section class="secvideo video-container custom-video-player">
+          <video id="myVideo" poster="${projeto.posterurl}">
+              <source id="videoSource" src="" preload="auto">
+          </video>
+          <div class="bannerads">
+              <button id="closeButton" onclick="closeBanner()" disabled><div id="countdownpp">5</div></button>
+              <div id="contbanner">${projeto.adsbanner}</div>
+          </div>
+          <span class="poster">
+              <img src="${projeto.posterurl}">
+          </span>
+          <div id="controlsplayer">
+              <span class="superiorpart"> 
+                  <span>
+                      <img src="${projeto.logoSrc}">
+                      <h8>${projeto.tituloEpi}</h8>
+                  </span>
+                  <button class="buttonjmp" id="eplinkpro">Próx. Ep</button>
+                  <button class="buttonjmp" id="pularop">Pular 90s</button>
+              </span>
+              <span class="medialpart">
+                  <button id="minusseg"></button>
+                  <button id="customPlayPauseBtn"></button>
+                  <button id="moreseg"></button>
+              </span>
+              <span class="endpart">
+                  <div class="timeline">
+                      <input class="progressao" type="range" min="0" max="100" value="0" step="0.01">
+                  </div>
+                  <div class="morebtn">
+                      <button id="volumepp">
+                          <input class="volu" type="range" min="0" max="100" value="100">
+                      </button>
+                      <button class="velocidade speed-btn">1x</button>
+                      <span class="current-time">00:00</span>
+                      <span class="total-time"></span>
+                      <button id="qualidade"><h8 id="qAtual"></h8></button>
+                      <h3 id="video480p" data-source="${projeto.video480p}" onclick="changeSource(this)">460p</h3><img>
+                      <h3 id="videoPrincipal" class="hd" data-source="${projeto.videoPrincipal}" onclick="changeSource(this)">720p</h3>
+                      <h3 id="video1080p" data-source="${projeto.video1080p}" onclick="changeSource(this)">1080p</h3>
+                      <button id="fullcontrols" class="full-screen-btn"></button>
+                  </div>
+              </span>
+          </div>
+      </section>`;
 
-// updateHTML.js
-document.addEventListener("DOMContentLoaded", function () {
-    var video = document.getElementById("myVideo");
-    var poster = document.querySelector(".poster img");
-    var bannerContent = document.getElementById("contbanner");
-    var logo = document.querySelector("#controlsplayer .superiorpart img");
-    var title = document.querySelector("#controlsplayer .superiorpart h8");
-    var video480p = document.getElementById("video480p");
-    var videoPrincipal = document.getElementById("videoPrincipal");
-    var video1080p = document.getElementById("video1080p");
+// Agora você pode usar o conteúdo HTML conforme necessário.
+document.getElementById("projetoContainer").innerHTML = htmlContent;
 
-    // Update the elements with 'DataJsn' data
-    video.setAttribute("poster", DataJsn.posterurl);
-    poster.src = DataJsn.posterurl;
-    bannerContent.textContent = DataJsn.adsbanner;
-    logo.src = DataJsn.logoSrc;
-    title.textContent = DataJsn.tituloEpi;
-    video480p.setAttribute("data-source", DataJsn.video480p);
-    videoPrincipal.setAttribute("data-source", DataJsn.videoPrincipal);
-    video1080p.setAttribute("data-source", DataJsn.video1080p);
-});
+
+
+
+
+
+
+
 
 
 const video = document.querySelector("video");
