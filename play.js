@@ -1,4 +1,12 @@
-
+ var DataJsn = {
+      "posterurl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTibkyRP8IPYlfOKDmGeJs-BtLjMvjd4b9FeQ&usqp=CAU",
+      "adsbanner": "",
+      "logoSrc": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgWCjWhAZTjrCbHCQF9ZeBGPYlNMtSp4Rbvi9mt7Zi6W4BsYO4XhNFWwv-JXX6A9edL0rjSqARjN_Rwf8Q1keR_doN4gIPoYtcrlyuhGEFmePVcgTS__BBVPrGdZMhMlLILQJFeiy8mYt1e8y4Ln-JVeVUK9u4pmQ1t1EKoYZWTEvFE01IpZwB55nxoFQ/s1600/1662763087449.png",
+      "tituloEpi": "Boruto: Naruto Next",
+      "videoPrincipal": "https://hd2.animesdigital.org/animes/j/jujutsu-kaisen-2/18.mp4",
+      "video480p": "https://hd2.animesdigital.org/animes/j/jujutsu-kaisen-2/18.mp4",
+      "video1080p": "https://hd2.animesdigital.org/animes/j/jujutsu-kaisen-2/18.mp4"
+    };
 
 // updateHTML.js
 document.addEventListener("DOMContentLoaded", function () {
