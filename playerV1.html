@@ -59,35 +59,29 @@
 
 
   <script>
- var jsonData = JSON.parse(localStorage.getItem('jsonData')) || {};
-  
-  // Agora você pode usar jsonData normalmente
-  console.log(jsonData);
-  
-  // Atualizar elementos com os valores do JSON
-  document.getElementById('myVideo').poster = jsonData.projeto.posterurl;
-  document.getElementById('contbanner').textContent = jsonData.projeto.adsbanner;
-  document.querySelector('.poster img').src = jsonData.projeto.posterurl;
-  document.querySelector('.superiorpart img').src = jsonData.projeto.logoSrc;
-  document.querySelector('.superiorpart h8').textContent = jsonData.projeto.tituloEpi;
-  document.getElementById('videoSource').src = jsonData.projeto.video480p;
-  document.getElementById('video480p').dataset.source = jsonData.projeto.video480p;
-  document.getElementById('video720p').dataset.source = jsonData.projeto.video720p;
-  document.getElementById('video1080p').dataset.source = jsonData.projeto.video1080p;
+ function getURLParameter(name) {
+      return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [,""])[1].replace(/\+/g, '%20')) || null;
+    }
 
+    // Get jsonDataKey from the URL
+    var jsonDataKey = getURLParameter('jsonDataKey');
 
-    function getURLParameter(name) {
-    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [,""])[1].replace(/\+/g, '%20')) || null;
-  }
+    // Get jsonData from localStorage
+    var jsonData = JSON.parse(localStorage.getItem('jsonData')) || {};
 
-  var jsonDataKey = getURLParameter('jsonDataKey');
-  var jsonData = localStorage.getItem('jsonData');
-  if (jsonData && jsonDataKey) {
-    jsonData = JSON.parse(jsonData);
+    // Access project data using jsonDataKey
     var projectData = jsonData[jsonDataKey];
-    // Agora você pode acessar os dados do projeto conforme necessário
-    console.log(projectData);
-  }
+
+    // Update elements with project data (adjust the IDs accordingly)
+    document.getElementById('myVideo').poster = projectData.posterurl;
+    document.getElementById('contbanner').textContent = projectData.adsbanner;
+    document.querySelector('.poster img').src = projectData.posterurl;
+    document.querySelector('.superiorpart img').src = projectData.logoSrc;
+    document.querySelector('.superiorpart h8').textContent = projectData.tituloEpi;
+    document.getElementById('videoSource').src = projectData.video480p;
+    document.getElementById('video480p').dataset.source = projectData.video480p;
+    document.getElementById('video720p').dataset.source = projectData.video720p;
+    document.getElementById('video1080p').dataset.source = projectData.video1080p;
 </script>
 
 </body>
