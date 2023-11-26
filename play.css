@@ -372,7 +372,7 @@ padding:0;
   align-items:center;
 }
 
-#qualidade.moreq~.quah {
+#qualidade.moreq ~ .quah {
   display: flex;
 
 }
@@ -406,10 +406,7 @@ padding:0;
 #qualidade.moreq #qAtual{
   display:none;
 }
-#qualidade.moreq ~ h3 {
-  display: flex;
-  
-}
+
 
 .aink{
   display:none;
