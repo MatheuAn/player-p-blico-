@@ -1,87 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualização de Elementos HTML</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link rel="stylesheet" href="https://matheuan.github.io/player-p-blico-/play.css">
-        <script src="https://matheuan.github.io/player-p-blico-/play.js" defer></script>
-        <script src="conf.js"></script>
-
+    
+    <link rel="stylesheet" href="https://tinyurl.com/534uyf2r">
+    
+    <script src="https://tinyurl.com/ka4fy7zm" defer></script>
+    
 </head>
 <body>
-
-       <section class="secvideo video-container custom-video-player">
-          <video id="myVideo" poster="${projeto.posterurl}">
-              <source id="videoSource" src="" preload="auto">
-          </video>
-          <div class="bannerads">
-              <button id="closeButton" onclick="closeBanner()" disabled><div id="countdownpp">5</div></button>
-              <div id="contbanner">${projeto.adsbanner}</div>
-          </div>
-          <span class="poster">
-              <img src="${projeto.posterurl}">
+<section class="secvideo video-container custom-video-player">
+    <video id="myVideo" poster="${posterurl}">
+        <source id="videoSource" src="" preload="auto">
+    </video>
+        <source id="videoSource" src="" preload="auto">
+        </video>
+        <div class="bannerads">
+          <button id="closeButton" onclick="closeBanner()" disabled>
+            <div id="countdownpp">5</div>
+          </button>
+          <div id="contbanner">${adsbanner}</div>
+        </div>
+        <span class="poster">
+          <img src="">
+        </span>
+        <div id="controlsplayer">
+          <span class="superiorpart">
+            <span>
+              <img id="logo" src="${logoSrc}">
+            <h8 id="tituloEpi">${tituloEpi}</h8>
+            </span>
+            <button class="buttonjmp" id="eplinkpro">Próx. Ep</button>
+            <button class="buttonjmp" id="pularop">Pular 90s</button>
           </span>
-          <div id="controlsplayer">
-              <span class="superiorpart"> 
-                  <span>
-                      <img src="${projeto.logoSrc}">
-                      <h8>${projeto.tituloEpi}</h8>
-                  </span>
-                  <button class="buttonjmp" id="eplinkpro">Próx. Ep</button>
-                  <button class="buttonjmp" id="pularop">Pular 90s</button>
-              </span>
-              <span class="medialpart">
-                  <button id="minusseg"></button>
-                  <button id="customPlayPauseBtn"></button>
-                  <button id="moreseg"></button>
-              </span>
-              <span class="endpart">
-                  <div class="timeline">
-                      <input class="progressao" type="range" min="0" max="100" value="0" step="0.01">
-                  </div>
-                  <div class="morebtn">
-                      <button id="volumepp">
-                          <input class="volu" type="range" min="0" max="100" value="100">
-                      </button>
-                      <button class="velocidade speed-btn">1x</button>
-                      <span class="current-time">00:00</span>
-                      <span class="total-time"></span>
-                      <button id="qualidade"><h8 id="qAtual"></h8></button>
-                      <h3 id="video480p" data-source="${projeto.video480p}" onclick="changeSource(this)">480p</h3><img>
-                      <h3 id="video720p" class="hd" data-source="${projeto.video720p}" onclick="changeSource(this)">720p</h3>
-                      <h3 id="video1080p" data-source="${projeto.video1080p}" onclick="changeSource(this)">1080p</h3>
-                      <button id="fullcontrols" class="full-screen-btn"></button>
-                  </div>
-              </span>
-          </div>
-      </section>
+          <span class="medialpart">
+            <button id="minusseg"></button>
+            <button id="customPlayPauseBtn"></button>
+            <button id="moreseg"></button>
+          </span>
+          <span class="endpart">
+            <div class="timeline">
+              <input class="progressao" type="range" min="0" max="100" value="0" step="0.01">
+            </div>
+            <div class="morebtn">
+              <button id="volumepp">
+                <input class="volu" type="range" min="0" max="100" value="100">
+              </button>
+              <button class="velocidade speed-btn">1x</button>
+              <span class="current-time">00:00</span>
+              <span class="total-time"></span>
+              <button id="qualidade">
+                <h8 id="qAtual"></h8>
+              </button>
+              <h3 id="video480p" data-source="${video480p}" onclick="changeSource(this)">460p</h3><img>
+              <h3 id="videoPrincipal" class="hd" data-source="${videoPrincipal}" onclick="changeSource(this)">720p</h3>
+              <h3 id="video1080p" data-source="${video1080p}" onclick="changeSource(this)">1080p</h3>
+              <button id="fullcontrols" class="full-screen-btn"></button>
+            </div>
+          </span>
+        </div>
+        </section>
 
+<script>
+    // Função para substituir os placeholders pelos valores correspondentes
+    function substituirPlaceholders() {
+        document.getElementById('contbanner').innerHTML = dadosEditaveis.adsbanner;
+        document.getElementById('logo').src = dadosEditaveis.logoSrc;
+        document.getElementById('tituloEpi').innerHTML = dadosEditaveis.tituloEpi;
+        document.getElementById('video480p').dataset.source = dadosEditaveis.video480p;
+        document.getElementById('videoPrincipal').dataset.source = dadosEditaveis.videoPrincipal;
+        document.getElementById('video1080p').dataset.source = dadosEditaveis.video1080p;
 
-  <script>
- function getURLParameter(name) {
-      return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [,""])[1].replace(/\+/g, '%20')) || null;
+        var myVideo = document.getElementById('myVideo');
+        myVideo.poster = dadosEditaveis.posterurl;
+
+        // Adicione as fontes de vídeo ao elemento <video>
+        var source480p = document.createElement('source');
+        source480p.src = dadosEditaveis.video480p;
+        source480p.type = 'video/mp4';
+        myVideo.appendChild(source480p);
+
+        var sourcePrincipal = document.createElement('source');
+        sourcePrincipal.src = dadosEditaveis.videoPrincipal;
+        sourcePrincipal.type = 'video/mp4';
+        myVideo.appendChild(sourcePrincipal);
+
+        var source1080p = document.createElement('source');
+        source1080p.src = dadosEditaveis.video1080p;
+        source1080p.type = 'video/mp4';
+        myVideo.appendChild(source1080p);
     }
 
-    // Get jsonDataKey from the URL
-    var jsonDataKey = getURLParameter('jsonDataKey');
-
-    // Get jsonData from localStorage
-    var jsonData = JSON.parse(localStorage.getItem('jsonData')) || {};
-
-    // Access project data using jsonDataKey
-    var projectData = jsonData[jsonDataKey];
-
-    // Update elements with project data (adjust the IDs accordingly)
-    document.getElementById('myVideo').poster = projectData.posterurl;
-    document.getElementById('contbanner').textContent = projectData.adsbanner;
-    document.querySelector('.poster img').src = projectData.posterurl;
-    document.querySelector('.superiorpart img').src = projectData.logoSrc;
-    document.querySelector('.superiorpart h8').textContent = projectData.tituloEpi;
-    document.getElementById('videoSource').src = projectData.video480p;
-    document.getElementById('video480p').dataset.source = projectData.video480p;
-    document.getElementById('video720p').dataset.source = projectData.video720p;
-    document.getElementById('video1080p').dataset.source = projectData.video1080p;
+    // Chame a função quando necessário, por exemplo, após obter novos dados
+    substituirPlaceholders();
 </script>
 
 </body>
