@@ -366,9 +366,20 @@ padding:0;
 }
 
 
-.endpart h3 {
+.quah{
   display:none;
+  gap:10px;
+  align-items:center;
+}
+
+#qualidade.moreq~.quah {
+  display: flex;
+
+}
+.endpart h3 {
+  display:flex;
   color: var(--corwpp);
+  margin:0!important;
 }
 #qAtual,
 .endpart h3{
