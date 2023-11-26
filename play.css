@@ -370,6 +370,7 @@ padding:0;
   display:none;
   gap:10px;
   align-items:center;
+  border:2px solid green
 }
 
 #qualidade.moreq ~ .quah {
