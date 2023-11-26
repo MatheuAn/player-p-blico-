@@ -3,29 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="play.css">
-  <script src="play.js" defer></script>
-  <title>Aplicação de JSON</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link rel="stylesheet" href="https://matheuan.github.io/player-p-blico-/play.css">
+        <script src="https://matheuan.github.io/player-p-blico-/play.js" defer></script>
+        <script src="conf.js"></script>
+
 </head>
 <body>
 
        <section class="secvideo video-container custom-video-player">
-          <video id="myVideo" poster="">
+          <video id="myVideo" poster="${projeto.posterurl}">
               <source id="videoSource" src="" preload="auto">
           </video>
           <div class="bannerads">
               <button id="closeButton" onclick="closeBanner()" disabled><div id="countdownpp">5</div></button>
-              <div id="contbanner"></div>
+              <div id="contbanner">${projeto.adsbanner}</div>
           </div>
           <span class="poster">
-              <img src="">
+              <img src="${projeto.posterurl}">
           </span>
           <div id="controlsplayer">
               <span class="superiorpart"> 
                   <span>
-                      <img src="">
-                      <h8></h8>
+                      <img src="${projeto.logoSrc}">
+                      <h8>${projeto.tituloEpi}</h8>
                   </span>
                   <button class="buttonjmp" id="eplinkpro">Próx. Ep</button>
                   <button class="buttonjmp" id="pularop">Pular 90s</button>
@@ -47,48 +48,34 @@
                       <span class="current-time">00:00</span>
                       <span class="total-time"></span>
                       <button id="qualidade"><h8 id="qAtual"></h8></button>
-                      <h3 id="video480p" data-source="" onclick="changeSource(this)">460p</h3><img>
-                      <h3 id="video720p" class="hd" data-source="" onclick="changeSource(this)">720p</h3>
-                      <h3 id="video1080p" data-source="" onclick="changeSource(this)">1080p</h3>
+                      <h3 id="video480p" data-source="${projeto.video480p}" onclick="changeSource(this)">480p</h3><img>
+                      <h3 id="video720p" class="hd" data-source="${projeto.video720p}" onclick="changeSource(this)">720p</h3>
+                      <h3 id="video1080p" data-source="${projeto.video1080p}" onclick="changeSource(this)">1080p</h3>
                       <button id="fullcontrols" class="full-screen-btn"></button>
                   </div>
               </span>
           </div>
       </section>
-<script>
-  var jsonData = JSON.parse(localStorage.getItem('jsonData')) || {};
 
-document.getElementById('myVideo').poster = jsonData.projeto.posterurl;
-document.getElementById('contbanner').textContent = jsonData.projeto.adsbanner;
-document.querySelector('.poster img').src = jsonData.projeto.posterurl;
-document.querySelector('.superiorpart img').src = jsonData.projeto.logoSrc;
-document.querySelector('.superiorpart h8').textContent = jsonData.projeto.tituloEpi;
-document.getElementById('videoSource').src = jsonData.projeto.video480p;
-document.getElementById('video480p').dataset.source = jsonData.projeto.video480p;
-document.getElementById('video720p').dataset.source = jsonData.projeto.video720p;
-document.getElementById('video1080p').dataset.source = jsonData.projeto.video1080p;
 
-// Envie uma mensagem para a janela pai assim que a página for carregada
-window.onload = function () {
-  window.parent.postMessage({ action: 'atualizarDados', jsonData }, '*');
-};
-
-// Ouve mensagens do iframe
-window.addEventListener('message', function(event) {
-  if (event.data.action === 'atualizarDados') {
-    // Atualiza os dados conforme necessário
-    jsonData = event.data.jsonData;
-    document.getElementById('myVideo').poster = jsonData.projeto.posterurl;
-    document.getElementById('contbanner').textContent = jsonData.projeto.adsbanner;
-    document.querySelector('.poster img').src = jsonData.projeto.posterurl;
-    document.querySelector('.superiorpart img').src = jsonData.projeto.logoSrc;
-    document.querySelector('.superiorpart h8').textContent = jsonData.projeto.tituloEpi;
-    document.getElementById('videoSource').src = jsonData.projeto.video480p;
-    document.getElementById('video480p').dataset.source = jsonData.projeto.video480p;
-    document.getElementById('video720p').dataset.source = jsonData.projeto.video720p;
-    document.getElementById('video1080p').dataset.source = jsonData.projeto.video1080p;
-  }
-});
+  <script>
+ var jsonData = JSON.parse(localStorage.getItem('jsonData')) || {};
+  
+  // Agora você pode usar jsonData normalmente
+  console.log(jsonData);
+  
+  // Atualizar elementos com os valores do JSON
+  document.getElementById('myVideo').poster = jsonData.projeto.posterurl;
+  document.getElementById('contbanner').textContent = jsonData.projeto.adsbanner;
+  document.querySelector('.poster img').src = jsonData.projeto.posterurl;
+  document.querySelector('.superiorpart img').src = jsonData.projeto.logoSrc;
+  document.querySelector('.superiorpart h8').textContent = jsonData.projeto.tituloEpi;
+  document.getElementById('videoSource').src = jsonData.projeto.video480p;
+  document.getElementById('video480p').dataset.source = jsonData.projeto.video480p;
+  document.getElementById('video720p').dataset.source = jsonData.projeto.video720p;
+  document.getElementById('video1080p').dataset.source = jsonData.projeto.video1080p;
+ 
 </script>
+
 </body>
 </html>
