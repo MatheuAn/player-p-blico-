@@ -74,7 +74,20 @@
   document.getElementById('video480p').dataset.source = jsonData.projeto.video480p;
   document.getElementById('video720p').dataset.source = jsonData.projeto.video720p;
   document.getElementById('video1080p').dataset.source = jsonData.projeto.video1080p;
- 
+
+
+    function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [,""])[1].replace(/\+/g, '%20')) || null;
+  }
+
+  var jsonDataKey = getURLParameter('jsonDataKey');
+  var jsonData = localStorage.getItem('jsonData');
+  if (jsonData && jsonDataKey) {
+    jsonData = JSON.parse(jsonData);
+    var projectData = jsonData[jsonDataKey];
+    // Agora você pode acessar os dados do projeto conforme necessário
+    console.log(projectData);
+  }
 </script>
 
 </body>
