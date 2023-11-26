@@ -1,5 +1,64 @@
 
 
+
+const root = document.querySelector('#root');
+const modelo = `
+<section class="secvideo video-container custom-video-player">
+      <video id="myVideo" poster="${dados.posterurl}">
+          <source id="videoSource" src="" preload="auto">
+      </video>
+          <source id="videoSource" src="" preload="auto">
+          </video>
+          <div class="bannerads">
+            <button id="closeButton" onclick="closeBanner()" disabled>
+              <div id="countdownpp">5</div>
+            </button>
+            <div id="contbanner">${dados.adsbanner}</div>
+          </div>
+          <span class="poster">
+            <img src="">
+          </span>
+          <div id="controlsplayer">
+            <span class="superiorpart">
+              <span>
+                <img id="logo" src="${dados.logoSrc}">
+              <h8 id="tituloEpi">${dados.tituloEpi}</h8>
+              </span>
+              <button class="buttonjmp" id="eplinkpro">Próx. Ep</button>
+              <button class="buttonjmp" id="pularop">Pular 90s</button>
+            </span>
+            <span class="medialpart">
+              <button id="minusseg"></button>
+              <button id="customPlayPauseBtn"></button>
+              <button id="moreseg"></button>
+            </span>
+            <span class="endpart">
+              <div class="timeline">
+                <input class="progressao" type="range" min="0" max="100" value="0" step="0.01">
+              </div>
+              <div class="morebtn">
+                <button id="volumepp">
+                  <input class="volu" type="range" min="0" max="100" value="100">
+                </button>
+                <button class="velocidade speed-btn">1x</button>
+                <span class="current-time">00:00</span>
+                <span class="total-time"></span>
+                <button id="qualidade">
+                  <h8 id="qAtual"></h8>
+                </button>
+                <h3 id="video480p" data-source="${dados.video480p}" onclick="changeSource(this)">460p</h3>
+                <h3 id="videoPrincipal" class="hd" data-source="${dados.videoPrincipal}" onclick="changeSource(this)">720p</h3>
+                <h3 id="video1080p" data-source="${dados.video1080p}" onclick="changeSource(this)">1080p</h3>
+                <button id="fullcontrols" class="full-screen-btn"></button>
+              </div>
+            </span>
+          </div>
+          </section>
+    `
+
+
+root.insertAdjacentHTML('beforeend', modelo);
+
 const video = document.querySelector("video");
 const progressaoInput = document.querySelector(".progressao");
 let isSeeking = false;
