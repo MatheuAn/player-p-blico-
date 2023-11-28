@@ -1,4 +1,11 @@
 
+  var meuIframe = document.getElementById("meuIframe");
+
+  meuIframe.addEventListener('load', function() {
+    meuIframe.style.height = meuIframe.contentWindow.document.body.scrollHeight + 'px';
+  });
+
+
      var titlepostElement = document.querySelector('.titlepostagem');
      var tititpmElement = document.getElementById('tititpm');
      if (titlepostElement && tititpmElement) { 
